@@ -5,7 +5,6 @@ namespace Silpo
         public readonly Category Category;
         public readonly int Factor;
 
-
         public FactorByCategoryOffer(Category category, int factor)
         {
             Category = category;
