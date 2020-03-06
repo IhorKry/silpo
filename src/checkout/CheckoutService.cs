@@ -28,7 +28,13 @@ namespace Silpo
 
         public void UseOffer(AnyGoodsOffer offer)
         {
-            if (offer.TotalCost <= Check.GetTotalCost())
+            if (offer is FactorByCategoryOffer)
+            {
+                FactorByCategoryOffer fbOffer = (FactorByCategoryOffer)offer;
+                int points = Check.GetCostByCategory(fbOffer.Category);
+                Check.AddPoints(points * (fbOffer.Factor - 1));
+            }
+            else if (offer.TotalCost <= Check.GetTotalCost())
             {
                 Check.AddPoints(offer.Points);
             }

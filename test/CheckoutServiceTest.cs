@@ -14,8 +14,8 @@ namespace SilpoTest
             CheckoutService = new CheckoutService();
             CheckoutService.OpenCheck();
 
-            Milk_7 = new Product(7, "Milk");
-            Bread_3 = new Product(3, "Bread");
+            Milk_7 = new Product(7, "Milk", Category.MILK);
+            Bread_3 = new Product(3, "Bread", Category.BREAD);
         }
 
         [Fact]
@@ -80,6 +80,19 @@ namespace SilpoTest
             Check Check = CheckoutService.CloseCheck();
 
             Assert.Equal(3, Check.GetTotalPoints());
+        }
+
+        [Fact]
+        public void useOffer__factorByCategory()
+        {
+            CheckoutService.AddProduct(Milk_7);
+            CheckoutService.AddProduct(Milk_7);
+            CheckoutService.AddProduct(Bread_3);
+
+            CheckoutService.UseOffer(new FactorByCategoryOffer(Category.MILK, 2));
+            Check Check = CheckoutService.CloseCheck();
+
+            Assert.Equal(31, Check.GetTotalPoints());
         }
     }
 }

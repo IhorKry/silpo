@@ -31,5 +31,20 @@ namespace Silpo
         {
             Points += points;
         }
+
+        public int GetCostByCategory(Category category)
+        {
+            int result = 0;
+            
+            foreach (var product in Products)
+            {
+                if (product.Category == category)
+                {
+                    result += product.Price;
+                }
+            }
+
+            return result;
+        }
     }
 }

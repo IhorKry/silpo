@@ -2,13 +2,21 @@ namespace Silpo
 {
     public class Product
     {
-        public int Price;
-        public string Name;
+        internal readonly int Price;
+        internal readonly string Name;
+        internal Category Category;
+
+        public Product(int price, string name, Category category)
+        {
+            Price = price;
+            Name = name;
+            Category = category;
+        }
 
         public Product(int price, string name)
         {
-            this.Price = price;
-            this.Name = name;
+            Price = price;
+            Name = name;
         }
     }
 }
