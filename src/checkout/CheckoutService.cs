@@ -26,18 +26,9 @@ namespace Silpo
             return closedCheck;
         }
 
-        public void UseOffer(AnyGoodsOffer offer)
+        public void UseOffer(Offer offer)
         {
-            if (offer is FactorByCategoryOffer)
-            {
-                FactorByCategoryOffer fbOffer = (FactorByCategoryOffer)offer;
-                int points = Check.GetCostByCategory(fbOffer.Category);
-                Check.AddPoints(points * (fbOffer.Factor - 1));
-            }
-            else if (offer.TotalCost <= Check.GetTotalCost())
-            {
-                Check.AddPoints(offer.Points);
-            }
+            offer.apply(Check);
         }
     }
 }
