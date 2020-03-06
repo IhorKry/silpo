@@ -4,12 +4,21 @@ namespace Silpo
 {
     public class Check
     {
-        public List<Product> Products;
+        private List<Product> Products = new List<Product>();
 
-        public int TotalCost;
         public int GetTotalCost()
         {
-            return TotalCost;
+            int totalCost = 0;
+            foreach (Product product in Products)
+            {
+                totalCost += product.Price;
+            }
+            return totalCost;
+        }
+
+        internal void AddProduct(Product product)
+        {
+            Products.Add(product);
         }
     }
 }
