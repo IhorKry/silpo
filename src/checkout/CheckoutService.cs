@@ -25,5 +25,13 @@ namespace Silpo
             Check = null;
             return closedCheck;
         }
+
+        public void UseOffer(AnyGoodsOffer offer)
+        {
+            if (offer.TotalCost <= Check.GetTotalCost())
+            {
+                Check.AddPoints(offer.Points);
+            }
+        }
     }
 }

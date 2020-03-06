@@ -5,6 +5,7 @@ namespace Silpo
     public class Check
     {
         private List<Product> Products = new List<Product>();
+        private int Points;
 
         public int GetTotalCost()
         {
@@ -23,7 +24,12 @@ namespace Silpo
 
         public int GetTotalPoints()
         {
-            return GetTotalCost();
+            return GetTotalCost() + Points;
+        }
+
+        internal void AddPoints(int points)
+        {
+            Points += points;
         }
     }
 }
