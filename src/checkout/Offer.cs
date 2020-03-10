@@ -18,7 +18,7 @@ namespace Silpo
 
         public abstract void Apply(Check check);
 
-        public virtual bool isExpired()
+        public virtual bool IsExpired()
         {
             int result = DateTime.Compare(Expiration, DateTime.Today);
 

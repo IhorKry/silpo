@@ -21,7 +21,7 @@ namespace Silpo
 
         public override void Apply(Check check)
         {
-            if (isExpired()) return;
+            if (IsExpired()) return;
 
             if (TotalCost <= check.GetTotalCost())
             {
