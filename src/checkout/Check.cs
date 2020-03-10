@@ -46,5 +46,20 @@ namespace Silpo
 
             return result;
         }
+
+        public int GetCostByBrand(Brand brand)
+        {
+            int result = 0;
+            
+            foreach (var product in Products)
+            {
+                if (product.Brand == brand)
+                {
+                    result += product.Price;
+                }
+            }
+
+            return result;
+        }
     }
 }

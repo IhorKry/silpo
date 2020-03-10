@@ -4,7 +4,16 @@ namespace Silpo
     {
         internal readonly int Price;
         internal readonly string Name;
-        internal Category Category;
+        internal readonly Category Category;
+        internal readonly Brand Brand;
+
+        public Product(int price, string name, Category category, Brand brand)
+        {
+            Price = price;
+            Name = name;
+            Category = category;
+            Brand = brand;
+        }
 
         public Product(int price, string name, Category category)
         {

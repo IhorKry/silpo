@@ -1,5 +1,6 @@
 public enum Category
 {
     MILK,
-    BREAD
+    BREAD,
+    WATER
 }
