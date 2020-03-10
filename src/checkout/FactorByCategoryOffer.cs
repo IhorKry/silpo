@@ -1,3 +1,5 @@
+using System;
+
 namespace Silpo
 {
     public class FactorByCategoryOffer : Offer
@@ -11,8 +13,16 @@ namespace Silpo
             Factor = factor;
         }
 
+        public FactorByCategoryOffer(Category category, int factor, DateTime expiration) : base(expiration)
+        {
+            Category = category;
+            Factor = factor;
+        }
+
         public override void Apply(Check check)
         {
+            if (isExpired()) return;
+
             int points = check.GetCostByCategory(Category);
             check.AddPoints(points * (Factor - 1));
         }

@@ -1,3 +1,4 @@
+using System;
 using Xunit;
 using Silpo;
 
@@ -105,6 +106,17 @@ namespace SilpoTest
             Check Check = CheckoutService.CloseCheck();
 
             Assert.Equal(17, Check.GetTotalPoints());
+        }
+
+        [Fact]
+        public void useOffer__ifOfferExpired__doNotAddPoints()
+        {
+            CheckoutService.AddProduct(Milk_7);
+            CheckoutService.UseOffer(new FactorByCategoryOffer(Category.MILK, 2, new DateTime(2000, 1, 1)));
+
+            Check Check = CheckoutService.CloseCheck();
+
+            Assert.Equal(7, Check.GetTotalPoints());
         }
     }
 }
