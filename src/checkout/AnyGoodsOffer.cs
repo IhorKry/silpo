@@ -4,8 +4,8 @@ namespace Silpo
 {
     public class AnyGoodsOffer : Offer
     {
-        public readonly int TotalCost;
-        public readonly int Points;
+        private readonly int TotalCost;
+        private readonly int Points;
 
         public AnyGoodsOffer(int totalCost, int points)
         {

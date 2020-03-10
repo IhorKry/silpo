@@ -4,7 +4,7 @@ namespace Silpo
 {
     abstract public class Offer
     {
-        public readonly DateTime Expiration;
+        private readonly DateTime Expiration;
 
         public Offer()
         {

@@ -4,8 +4,8 @@ namespace Silpo
 {
     public class FactorByCategoryOffer : Offer
     {
-        public readonly Category Category;
-        public readonly int Factor;
+        private readonly Category Category;
+        private readonly int Factor;
 
         public FactorByCategoryOffer(Category category, int factor)
         {
