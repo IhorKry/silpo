@@ -5,7 +5,7 @@ namespace Silpo
         public readonly int TotalCost;
         public readonly int Points;
 
-        public AnyGoodsOffer(int totalCost, int points) : base()
+        public AnyGoodsOffer(int totalCost, int points)
         {
             TotalCost = totalCost;
             Points = points;
