@@ -3,6 +3,7 @@ namespace Silpo
     public class CheckoutService
     {
         private Check Check;
+        private Offer Offer;
 
         public void OpenCheck()
         {
@@ -21,6 +22,7 @@ namespace Silpo
 
         public Check CloseCheck()
         {
+            if(Offer != null) Offer.apply(Check);
             Check closedCheck = Check;
             Check = null;
             return closedCheck;
@@ -28,7 +30,7 @@ namespace Silpo
 
         public void UseOffer(Offer offer)
         {
-            offer.apply(Check);
+            Offer = offer;
         }
     }
 }

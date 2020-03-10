@@ -94,5 +94,17 @@ namespace SilpoTest
 
             Assert.Equal(31, Check.GetTotalPoints());
         }
+
+        [Fact]
+        public void useOffer__atStartShopping()
+        {
+            CheckoutService.UseOffer(new FactorByCategoryOffer(Category.MILK, 2));
+            CheckoutService.AddProduct(Milk_7);
+            CheckoutService.AddProduct(Bread_3);
+
+            Check Check = CheckoutService.CloseCheck();
+
+            Assert.Equal(17, Check.GetTotalPoints());
+        }
     }
 }
