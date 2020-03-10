@@ -19,10 +19,8 @@ namespace Silpo
             Factor = factor;
         }
 
-        public override void Apply(Check check)
+        protected override void Apply(Check check)
         {
-            if (IsExpired()) return;
-
             int points = check.GetCostByCategory(Category);
             check.AddPoints(points * (Factor - 1));
         }

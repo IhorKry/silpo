@@ -19,10 +19,8 @@ namespace Silpo
             Points = points;
         }
 
-        public override void Apply(Check check)
+        protected override void Apply(Check check)
         {
-            if (IsExpired()) return;
-
             if (TotalCost <= check.GetTotalCost())
             {
                 check.AddPoints(Points);

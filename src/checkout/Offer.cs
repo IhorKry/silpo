@@ -16,13 +16,17 @@ namespace Silpo
             Expiration = expiration;
         }
 
-        public abstract void Apply(Check check);
+        protected abstract void Apply(Check check);
 
-        public virtual bool IsExpired()
+        public void Use(Check check)
         {
-            int result = DateTime.Compare(Expiration, DateTime.Today);
+            if (IsExpired()) return;
+            Apply(check);
+        }
 
-            return result < 0;
+        public bool IsExpired()
+        {
+            return Expiration < DateTime.Today;
         }
     }
 }

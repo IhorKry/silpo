@@ -22,7 +22,7 @@ namespace Silpo
 
         public Check CloseCheck()
         {
-            if(Offer != null) Offer.Apply(Check);
+            if(Offer != null) Offer.Use(Check);
             Check closedCheck = Check;
             Check = null;
             return closedCheck;
