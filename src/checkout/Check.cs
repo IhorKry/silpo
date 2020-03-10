@@ -6,14 +6,23 @@ namespace Silpo
     {
         private List<Product> Products = new List<Product>();
         private int Points;
+        private int Discount = 0;
 
         public int GetTotalCost()
         {
             int totalCost = 0;
+
             foreach (Product product in Products)
             {
                 totalCost += product.Price;
             }
+
+            if (Discount != 0)
+            {
+                var discount = Discount * totalCost / 100;
+                totalCost -= discount;
+            }
+
             return totalCost;
         }
 
@@ -35,7 +44,7 @@ namespace Silpo
         public int GetCostByCategory(Category category)
         {
             int result = 0;
-            
+
             foreach (var product in Products)
             {
                 if (product.Category == category)
@@ -50,7 +59,7 @@ namespace Silpo
         public int GetCostByBrand(Brand brand)
         {
             int result = 0;
-            
+
             foreach (var product in Products)
             {
                 if (product.Brand == brand)
@@ -60,6 +69,11 @@ namespace Silpo
             }
 
             return result;
+        }
+
+        public void UseDiscount(int discount)
+        {
+            Discount = discount;
         }
     }
 }

@@ -9,6 +9,7 @@ namespace SilpoTest
         private Product Milk_7;
         private Product Bread_3;
         private Product Sprite_10;
+        private Product Cola_12;
         private CheckoutService CheckoutService;
 
         public CheckoutServiceTest()
@@ -19,6 +20,7 @@ namespace SilpoTest
             Milk_7 = new Product(7, "Milk", Category.MILK);
             Bread_3 = new Product(3, "Bread", Category.BREAD);
             Sprite_10 = new Product(10, "Sprite", Category.WATER, Brand.SPRITE);
+            Cola_12 = new Product(12, "Cola", Category.WATER, Brand.COLA);
         }
 
         [Fact]
@@ -130,6 +132,17 @@ namespace SilpoTest
             Check Check = CheckoutService.CloseCheck();
 
             Assert.Equal(30, Check.GetTotalPoints());            
+        }
+
+        [Fact]
+        public void useOffer__DiscountOffer()
+        {
+            CheckoutService.AddProduct(Cola_12);
+            CheckoutService.UseOffer(new DiscountOffer(50, DateTime.MaxValue));
+
+            Check Check = CheckoutService.CloseCheck();
+
+            Assert.Equal(6, Check.GetTotalCost());
         }
     }
 }
