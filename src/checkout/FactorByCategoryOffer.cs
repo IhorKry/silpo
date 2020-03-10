@@ -11,7 +11,7 @@ namespace Silpo
             Factor = factor;
         }
 
-        public override void apply(Check check)
+        public override void Apply(Check check)
         {
             int points = check.GetCostByCategory(Category);
             check.AddPoints(points * (Factor - 1));

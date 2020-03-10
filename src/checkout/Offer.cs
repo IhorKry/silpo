@@ -2,6 +2,6 @@ namespace Silpo
 {
     abstract public class Offer
     {
-        public abstract void apply(Check check);
+        public abstract void Apply(Check check);
     }
 }

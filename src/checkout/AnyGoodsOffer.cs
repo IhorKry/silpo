@@ -11,7 +11,7 @@ namespace Silpo
             Points = points;
         }
 
-        public override void apply(Check check)
+        public override void Apply(Check check)
         {
             if (TotalCost <= check.GetTotalCost())
             {
