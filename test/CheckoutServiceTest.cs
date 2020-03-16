@@ -131,7 +131,7 @@ namespace SilpoTest
 
             Check Check = CheckoutService.CloseCheck();
 
-            Assert.Equal(30, Check.GetTotalPoints());            
+            Assert.Equal(30, Check.GetTotalPoints());
         }
 
         [Fact]
@@ -143,6 +143,53 @@ namespace SilpoTest
             Check Check = CheckoutService.CloseCheck();
 
             Assert.Equal(6, Check.GetTotalCost());
+        }
+
+        [Fact]
+        public void useOffer__bonusOffer__flatTotalCost()
+        {
+            CheckoutService.AddProduct(Cola_12);
+            CheckoutService.AddProduct(Cola_12);
+            CheckoutService.UseOffer(new BonusOffer(DateTime.MaxValue, new Flat(), new TotalCost(20, 5)));
+
+            Check Check = CheckoutService.CloseCheck();
+
+            Assert.Equal(29, Check.GetTotalPoints());
+        }
+
+        [Fact]
+        public void useOffer__bonusOffer__flatCostByCategory()
+        {
+            CheckoutService.AddProduct(Milk_7);
+            CheckoutService.UseOffer(new BonusOffer(DateTime.MaxValue, new Flat(), new CostByCategory(Category.MILK)));
+
+            Check Check = CheckoutService.CloseCheck();
+
+            Assert.Equal(14, Check.GetTotalPoints());
+        }
+
+        [Fact]
+        public void useOffer__bonusOffer__FactorTotalCost()
+        {
+            CheckoutService.AddProduct(Cola_12);
+            CheckoutService.AddProduct(Sprite_10);
+            CheckoutService.UseOffer(new BonusOffer(DateTime.MaxValue, new Factor(2), new TotalCost(20, 5)));
+
+            Check Check = CheckoutService.CloseCheck();
+
+            Assert.Equal(32, Check.GetTotalPoints());
+        }
+
+        [Fact]
+        public void useOffer__bonusOffer__FactorCostByCategory()
+        {
+            CheckoutService.AddProduct(Cola_12);
+            CheckoutService.AddProduct(Milk_7);
+            CheckoutService.UseOffer(new BonusOffer(DateTime.MaxValue, new Factor(2), new CostByCategory(Category.MILK)));
+
+            Check Check = CheckoutService.CloseCheck();
+
+            Assert.Equal(26, Check.GetTotalPoints());
         }
     }
 }

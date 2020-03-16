@@ -75,5 +75,10 @@ namespace Silpo
         {
             Discount = discount;
         }
+
+        public List<Product> GetProducts()
+        {
+            return Products;
+        }
     }
 }
